@@ -1,0 +1,78 @@
+@model IEnumerable<DesafioTodo.Models.Todo>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+</head>
+<body>
+    
+    <header>
+
+
+
+    </header>
+
+    <main class="conteudo container col-7">
+
+        <section class="conteudo-principal">
+
+            <div class="conteudo-principal-titulos">
+                <h1 class="conteudo-principal-titulos-titulo">TechList</h1>
+                <h2 class="conteudo-principal-titulos-subtitulo">Crie sua lista de maneira prática</h2>
+            </div>
+            <div class="conteudo-principal-imagem"> 
+                <img src="~/img/task.png">
+            </div>
+        </section>   
+     </main>
+        <div class="conteude-table container col-7">
+            <table class="tableTask table-hover">
+                <thead >
+                    
+                    <tr class="conteude-table-tr">
+                        <th>
+                            @Html.DisplayNameFor(model => model.Tasks)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Done)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CreateTask)
+                        </th>
+                        <th> <a asp-action="CreateOrUpdate"><img src="~/img/add.png"></a> </th>
+                    </tr>
+                </thead>
+                <tbody>
+            @foreach (var item in Model) {
+               
+                    <tr class="conteude-table-td">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Tasks)
+                        </td>
+                        <td class="check">
+                            @Html.DisplayFor(modelItem => item.Done)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreateTask)
+                        </td>
+                        <td>
+                            <a asp-action="CreateOrUpdate" asp-route-id="@item.Id"><img src="~/img/edit.png"></a>  
+                            
+                            <a asp-action="Delete" asp-route-id="@item.Id"><img src="~/img/cruz.png"></a>
+                        </td>
+                    </tr>
+            }
+                </tbody>
+        </table>
+        </div>
+   
+
+
+</body>
+</html>
+
+
